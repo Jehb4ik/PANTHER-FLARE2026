@@ -1,0 +1,10 @@
+# trained weights and nnU-Net artefacts are not tracked (see README: docker/model/)
+docker/model/*
+!docker/model/.gitkeep
+*.pth
+*.tar.gz
+__pycache__/
+*.pyc
+*.csv
+*.nii.gz
+.DS_Store
