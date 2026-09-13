@@ -43,8 +43,9 @@ code/
 3. `docker/README.md`: put the five `checkpoint_final.pth` files into
    `docker/model/fold_{0..4}/`, build the image, run `run_sanity.sh`.
 
-Not included: trained checkpoints (5 x 236 MB, hosted on HuggingFace, see
-`docker/README.md`; place them in `docker/model/`) and the FLARE 2026 data (registration on
+Not included: trained checkpoints (5 x 236 MB, hosted at
+https://huggingface.co/jehb4ik/PANTHER-FLARE2026, see `docker/README.md`;
+place them in `docker/model/`) and the FLARE 2026 data (registration on
 the `FLARE-MedFM/PancancerCTSeg` HuggingFace dataset is required; the manifest
 lists the exact 8762 files).
 

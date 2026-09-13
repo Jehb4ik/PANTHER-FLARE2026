@@ -17,11 +17,11 @@ of the image submitted to FLARE 2026 Task 1.
 ## Weights
 
 The five checkpoints (236 MB each), `plans.json` and `dataset.json` are hosted
-on HuggingFace (`HF_REPO` below is filled in after upload):
+on HuggingFace at https://huggingface.co/jehb4ik/PANTHER-FLARE2026:
 
 ```bash
 pip install huggingface_hub
-python -c "from huggingface_hub import snapshot_download; snapshot_download('HF_REPO', local_dir='model')"
+python -c "from huggingface_hub import snapshot_download; snapshot_download('jehb4ik/PANTHER-FLARE2026', local_dir='model')"
 ```
 
 Expected layout: `model/plans.json`, `model/dataset.json`, `model/fold_{0..4}/checkpoint_final.pth`.

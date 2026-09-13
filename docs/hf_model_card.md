@@ -18,7 +18,7 @@ segmentation on CT, trained on the per-source capped `Dataset500` subset
 mask-shape gate fitted on 172 healthy CT scans.
 
 Paper: *PANTHER: PAN-cancer CT Segmentation with Two-tier Healthy-scan Ensemble
-Rejection* (MICCAI 2026 FLARE Challenge, Task 1). Code: GITHUB_REPO.
+Rejection* (MICCAI 2026 FLARE Challenge, Task 1). Code: https://github.com/Jehb4ik/PANTHER-FLARE2026.
 
 | Metric | Value |
 |---|---|
