@@ -11,7 +11,7 @@ of the image submitted to FLARE 2026 Task 1.
 | `custom_trainer.py` | stand-in trainer class needed to load the checkpoints |
 | `maha_gate.json` | fitted gate parameters (mean, inverse covariance, tau = 7) |
 | `build.sh`, `test.sh` | build the image, run it on a local folder |
-| `run_sanity.sh` | timed run on a folder with a 1 Hz GPU-memory log (the numbers in the paper) |
+| `run_sanity.sh` | timed run with a 1 Hz GPU-memory log, the organizers' docker flags (the numbers in the paper) |
 | `model/` | put `plans.json`, `dataset.json` and `fold_{0..4}/checkpoint_final.pth` here |
 
 ## Weights
@@ -31,7 +31,7 @@ Expected layout: `model/plans.json`, `model/dataset.json`, `model/fold_{0..4}/ch
 ```bash
 ./build.sh jehb4ik:latest            # add "save" to also write a tar.gz
 ./test.sh  jehb4ik:latest /path/in /path/out
-./run_sanity.sh                       # edit IN/OUT/IMG at the top of the script
+./run_sanity.sh /path/in /path/out jehb4ik:latest   # timed run, logs in /path/sanity_logs/
 ```
 
 Input `<case>_0000.nii.gz`, output `<case>.nii.gz`.
