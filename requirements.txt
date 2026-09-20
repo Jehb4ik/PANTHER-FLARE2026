@@ -1,0 +1,10 @@
+# Local scripts (training helpers, gate fit, evaluation, figures). The inference
+# container installs its own pinned dependencies, see docker/Dockerfile.
+numpy>=1.24
+scipy>=1.10
+nibabel>=5.0
+SimpleITK>=2.3
+scikit-learn>=1.3
+matplotlib>=3.7
+huggingface_hub>=0.23
+nnunetv2==2.8.1
