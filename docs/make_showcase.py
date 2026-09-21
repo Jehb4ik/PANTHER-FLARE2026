@@ -40,7 +40,7 @@ def body_box(sl, pad=6):
     body = lab == (np.bincount(lab.ravel())[1:].argmax() + 1)
     ys, xs = np.where(body)
     y0, y1, x0, x1 = ys.min() - pad, ys.max() + pad, xs.min() - pad, xs.max() + pad
-    side = max(y1 - y0, x1 - x0)
+    side = min(max(y1 - y0, x1 - x0), *sl.shape)  # never larger than the image
     y0 = int(np.clip((y0 + y1) // 2 - side // 2, 0, sl.shape[0] - side))
     x0 = int(np.clip((x0 + x1) // 2 - side // 2, 0, sl.shape[1] - side))
     return y0, y0 + side, x0, x0 + side

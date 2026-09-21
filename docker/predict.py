@@ -264,7 +264,21 @@ def main() -> int:
                 predictor.predict_single_npy_array(
                     data, props, output_file_truncated=str(OUT / case),
                     save_or_return_probabilities=need_probs)
-                cc_dropped = 0
+            except Exception:                            # noqa: BLE001
+                failed.append(case)
+                traceback.print_exc()
+                try:
+                    write_empty(f, OUT / f"{case}.nii.gz")
+                    print(f"{case}: FAILED, empty mask written", flush=True)
+                except Exception:                        # noqa: BLE001
+                    print(f"{case}: FAILED, could not write empty mask", flush=True)
+                continue
+            # Gates run outside the inference try: if one of them fails, the
+            # predicted mask is kept as written instead of being replaced by
+            # an empty one.
+            cc_dropped, gated, maha_zeroed = 0, False, False
+            tags = []
+            try:
                 if need_probs:
                     probs_path = OUT / f"{case}.npz"
                     cc_dropped = apply_component_confidence_gate(
@@ -275,27 +289,20 @@ def main() -> int:
                         p = OUT / f"{case}{ext}"
                         p.unlink(missing_ok=True)
                 gated = apply_volume_gate(OUT / f"{case}.nii.gz")
-                maha_zeroed = False
                 if maha_gate is not None:
                     maha_zeroed = apply_maha_gate(
                         OUT / f"{case}.nii.gz", f, maha_gate)
-                tags = []
-                if cc_dropped:
-                    tags.append(f"dropped {cc_dropped} low-confidence components")
-                if gated:
-                    tags.append("zeroed by volume gate")
-                if maha_zeroed:
-                    tags.append("zeroed by Mahalanobis gate")
-                suffix = f" [{' + '.join(tags)}]" if tags else ""
-                print(f"{case}: {time.time() - t0:.1f} s{suffix}", flush=True)
             except Exception:                            # noqa: BLE001
-                failed.append(case)
                 traceback.print_exc()
-                try:
-                    write_empty(f, OUT / f"{case}.nii.gz")
-                    print(f"{case}: FAILED, empty mask written", flush=True)
-                except Exception:                        # noqa: BLE001
-                    print(f"{case}: FAILED, could not write empty mask", flush=True)
+                tags.append("gate failed, mask kept unfiltered")
+            if cc_dropped:
+                tags.append(f"dropped {cc_dropped} low-confidence components")
+            if gated:
+                tags.append("zeroed by volume gate")
+            if maha_zeroed:
+                tags.append("zeroed by Mahalanobis gate")
+            suffix = f" [{' + '.join(tags)}]" if tags else ""
+            print(f"{case}: {time.time() - t0:.1f} s{suffix}", flush=True)
     # nnU-Net drops its own auxiliary files next to the masks. The organizers
     # read the whole output directory, so the extras are removed.
     for junk in ("dataset.json", "plans.json", "predict_from_raw_data_args.json"):
