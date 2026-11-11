@@ -17,8 +17,9 @@
   produce a different plan.
 - `nnUNetTrainer_Epoch5000_Lr1e3.py`: trainer with 5000 epochs and initial
   learning rate 1e-3; everything else is stock nnU-Net.
-- `build_manifest.py`: one-off script that produced the manifest from our
-  internal layout (server-specific paths, kept for provenance).
+- `build_manifest.py`: one-off script that produced the manifest from a local
+  Dataset500 layout whose download tree mirrors the HuggingFace dataset
+  (paths are CLI arguments; kept for provenance).
 
 ## Dataset500
 
