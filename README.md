@@ -1,6 +1,6 @@
 # PANTHER: PAN-cancer CT Segmentation with Two-tier Healthy-scan Ensemble Rejection
 
-**🏆 Winner of the MICCAI 2026 FLARE Challenge, Task 1** ([certificate](#results)).
+**🏆 Meritorious Winner Award, MICCAI 2026 FLARE Challenge, Task 1** ([certificate](#results)).
 
 ![PANTHER results: hidden-validation DSC/NSD, false-positive rate on healthy CTs, per-scan inference time and GPU memory](docs/hero.png)
 
@@ -156,7 +156,7 @@ scan (min / median / mean / max), peak GPU memory 2614 MB, no failures.
 
 Challenge: https://www.codabench.org/competitions/7149/
 
-<p align="center"><img src="docs/Panther_winner.png" alt="FLARE 2026 Task 1 winner certificate" width="600"></p>
+<p align="center"><img src="docs/Panther_winner.png" alt="FLARE 2026 Task 1 Meritorious Winner Award certificate" width="600"></p>
 
 Best public validation cases by Dice, ground truth (green) versus the
 prediction of the submitted image (red):
