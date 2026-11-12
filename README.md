@@ -179,9 +179,14 @@ Codabench for hosting the challenge. The model is built on
 
 ## Citation
 
-Przhezdzetskaia E., Baranov V., Khazova M., Gombolevskiy V. PANTHER: PAN-cancer
-CT Segmentation with Two-tier Healthy-scan Ensemble Rejection. MICCAI 2026
-FLARE Challenge, Task 1 submission.
+> ```bibtex
+> @misc{panther2026,
+>   title  = {PANTHER: PAN-cancer CT Segmentation with Two-tier Healthy-scan Ensemble Rejection},
+>   author = {Przhezdzetskaia, Evgeniia and Baranov, Vasilii and Khazova, Mariia and Gombolevskiy, Victor},
+>   note   = {MICCAI 2026 FLARE Challenge, Task 1},
+>   year   = {2026}
+> }
+> ```
 
 ## License
 
